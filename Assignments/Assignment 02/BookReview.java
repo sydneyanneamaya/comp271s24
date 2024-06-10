@@ -33,11 +33,5 @@ public class BookReview {
         // https://gutenberg.org/cache/epub/98/pg98.txt is a link
         // to the text of "Tale of Two Cities" from Project Gutenberg
         String book = "https://gutenberg.org/cache/epub/98/pg98.txt";
-        Scanner myScanner = book.connectToBook(book);
-        int wordCount = 0;
-        while (myScanner.hasNext()){
-            wordCount++;
-        }
-        System.out.println(wordCount);
     } // method main
 } // class BookReview
