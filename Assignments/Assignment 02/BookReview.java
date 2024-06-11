@@ -29,15 +29,38 @@ public class BookReview {
         return bookScanner;
     } // method connecttoBook
 
+    /**
+     * use a while loop to traverse through book
+     * if a word is unique add to array
+     * if array is to small make it bigger
+     * count length of array and return int
+     * @param args
+     */
+
     public static void main(String[] args) {
         // https://gutenberg.org/cache/epub/98/pg98.txt is a link
         // to the text of "Tale of Two Cities" from Project Gutenberg
         String book = "https://gutenberg.org/cache/epub/98/pg98.txt";
-        Scanner myScanner = connectToBook(book);
-        int wordCount = 0;
-        while (myScanner.hasNext()){
-            wordCount++;
+        Scanner bookScanner = new Scanner();
+        bookScanner = connectToBook(book);
+        DynamicArray words = new DynamicArray();
+        String nextWord = " ";
+        while(bookScanner.hasNext()){
+            nextWord = bookScanner.next();
+            ifUnique(nextWord, words);
         }
-        System.out.println(wordCount);
-    } // method main
-} // class BookReview
+        int count = words.length();
+        System.out.println("The number of unique words is: " + count);
+    }
+
+    public void ifUnique(String string, String[] myArray){
+       boolean myBoolean = addUnique(string);
+       if (myBoolean == true){
+        resize();
+        add(string);
+       }
+    }
+
+} // method main
+
+// class BookReview
