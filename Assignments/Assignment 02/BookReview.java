@@ -41,7 +41,7 @@ public class BookReview {
         // https://gutenberg.org/cache/epub/98/pg98.txt is a link
         // to the text of "Tale of Two Cities" from Project Gutenberg
         String book = "https://gutenberg.org/cache/epub/98/pg98.txt";
-        Scanner bookScanner = new Scanner();
+        Scanner bookScanner;
         bookScanner = connectToBook(book);
         DynamicArray words = new DynamicArray();
         String nextWord = " ";
@@ -53,13 +53,13 @@ public class BookReview {
         System.out.println("The number of unique words is: " + count);
     }
 
-    public void ifUnique(String string, String[] myArray){
-       boolean myBoolean = addUnique(string);
+    public static void ifUnique(String string, DynamicArray myArray){
+       boolean myBoolean = myArray.addUnique(string);
        if (myBoolean == true){
-        resize();
-        add(string);
+        myArray.add(string);
        }
     }
+
 
 } // method main
 

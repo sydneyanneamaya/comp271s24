@@ -97,5 +97,13 @@ public class DynamicArray {
         }
         return canBeAdded;
     } // method addUnique
+
+    public int length () {
+        int count = 0;
+        for (int i = 0; i < this.data.length; i++) {
+            count++;
+        }
+        return count;
+    }
     
 } // class DynamicArray
