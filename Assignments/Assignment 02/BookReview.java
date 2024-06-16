@@ -32,7 +32,8 @@ public class BookReview {
     /**
      * use a while loop to traverse through book
      * if a word is unique add to array
-     * if array is to small make it bigger
+     * and make the array bigger to account
+     * for the new word
      * count length of array and return int
      * @param args
      */
