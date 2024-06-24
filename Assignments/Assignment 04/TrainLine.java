@@ -44,4 +44,14 @@ public class TrainLine {
             currentStation.setNext(newStation);
         }
     } // method addStation
+
+    public boolean contains(Station name){
+        boolean match = false;  
+        Station currentStation = this.head;  
+        while (!match && currentStation.hasNext()){
+            match = currentStation.equals(name);
+            currentStation = currentStation.getNext();
+        }
+        return match;
+    }
 }
