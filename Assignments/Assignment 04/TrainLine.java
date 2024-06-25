@@ -45,11 +45,24 @@ public class TrainLine {
         }
     } // method addStation
 
-    public boolean contains(Station name){
-        boolean match = false;  
+    /**
+     * method contains searches a trainline for a specific station
+     * @param Station station is the station the method needs to search for 
+     * in the trainline
+     * @return true if station exists in a trainline and false if not 
+     */
+
+    public boolean contains(Station station){
+        //initialize boolean variable, if the first station is the param then there is no need to check each station
+        boolean match = (this.head == station); 
+        //initialize currenStation as the head so the loop can traverse through the entire trainline starting
+        //at the head
         Station currentStation = this.head;  
+        //the loop ends when either the entire trainline is traversed or when the station is found
         while (!match && currentStation.hasNext()){
-            match = currentStation.equals(name);
+            //compares currentStation to the @param and returns true if equal and false is not equal
+            match = currentStation.equals(station);
+            //set the currentStation to the next Station so the loop can continue
             currentStation = currentStation.getNext();
         }
         return match;
