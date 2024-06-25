@@ -1,0 +1,22 @@
+This is my proposal for a way to represent the Trainline object.
+
+I think that when a user uses the toString method on a Trainline object all the fields should be printed as well as the fields of each station 
+in a TrainLine so the output should look like this: 
+
+/**Printing out the fields in the TrainLine class in Week 5 where the only field is the station head*/
+
+Station head: Howard
+Next Station: Jarvis
+NextStation: null
+
+In this example, the first station in a TrainLine is Howard and the next station is Jarvis and there is no station after jarvis so null is printed. 
+Each station name is also printed on its own line, and the next station is printed on a new line. 
+
+/**Printing out the fields in the TrainLine class in Week 6 where the fields are head, tail, and number of stations*/
+
+Using the fields in the TrainLine object from the Week 6 folder, I would print them similarily. Using the previous example, it would 
+look like this: 
+
+Head: Howard
+Tail: Jarvis
+Number of Stations: 2
