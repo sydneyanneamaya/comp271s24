@@ -54,7 +54,7 @@ public class TrainLine {
 
     public boolean contains(String stationName){
         //initialize boolean variable, if the first station is the param then there is no need to check each station
-        boolean match = (this.head == station); 
+        boolean match = false; 
         //initialize currentStation as the head so the loop can traverse through the entire trainline starting
         //at the head
         Station currentStation = this.head;  
