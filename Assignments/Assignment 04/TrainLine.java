@@ -57,11 +57,13 @@ public class TrainLine {
         boolean match = false; 
         //initialize currentStation as the head so the loop can traverse through the entire trainline starting
         //at the head
-        Station currentStation = this.head;  
+        Station currentStation = this.head; 
         //the loop ends when either the entire trainline is traversed or when the station is found
         while (!match && currentStation.hasNext()){
-            //compares currentStation to the @param and returns true if equal and false is not equal
-            match = currentStation.equals(stationName);
+            //gets the name of the current station on the trainline 
+            String currentName = currentStation.getName();
+            //compares currentStation to the @param and returns true if equal and false is not equal            
+            match = currentName.equals(stationName);
             //set the currentStation to the next Station so the loop can continue
             currentStation = currentStation.getNext();
         }
