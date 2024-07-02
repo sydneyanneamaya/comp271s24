@@ -72,7 +72,7 @@ public class TrainLine {
         boolean found = false;
         Station current = this.head;
         while (!found && current != null) {
-            found = current.getName().equals(name);
+            found = current.getName().equals(stationName);
             current = current.getNext();
         }
         return found;
@@ -130,7 +130,7 @@ public class TrainLine {
             Station current = this.head;
             while (current.hasNext()) {
                 sb.append(String.format("[ %s ] --> ", current.getName()));
-                current = current.getNext()
+                current = current.getNext();
             }
             // Treat the last station in the line
             sb.append(String.format("[ %s ]", tail.getName()));
@@ -139,6 +139,11 @@ public class TrainLine {
     } // method toString
 
     /** STUB FOR indexOf */
+    /**
+     * returns the numeric position of a station with a specified name 
+     * @param name
+     * @return position (int) or -1
+     */
     public int indexOf(String name) {
         return -1;
     } // method indexOf
