@@ -69,7 +69,11 @@ public class TrainLine {
      * @return true if station found; false otherwise or if object has no stations.
      */
     public boolean contains(String stationName) {
+        //initialize boolean 
         boolean found = false;
+        //indexOf compares each station in a TrainLine to the string param and if there is
+        //a match returns its index and if there is no match returns -1 so if index != -1
+        //then stationName exists on the TrainLine
         int index = indexOf(stationName);
         if (index != -1){
            found = true;    
