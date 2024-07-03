@@ -145,17 +145,30 @@ public class TrainLine {
      * @return position (int) or -1
      */
     public int indexOf(String name) {
+        //Create and initialize index 
         int index = -1;
         boolean match = false;
+        //Create and initializes current with this.head so the loop can start at the head station
         Station current = this.head;
+        //Use a while loop to traverse the TrainLine object
+        //The while loop ends when either the name is found in the TrainLine or 
+        //the entire TrainLine is traversed without the name being found, we know there are 
+        // no more stations when the current station's pointer is null
         while (!match && current != null){
+            //adds one to index to account for the stations's position
+            //head station is 0 
             index++;
+            //compares the current station's name to the @parm and returns true or false
             match = current.getName().equals(name);
+            //sets the current station to the station after the current station
             current = current.getNext();
         }
-        if (match == false && index == this.numberOfStations - 1){
+        //if a match was not found index is set to -1
+        if (match == false){
             index = -1;
         }
+        //return the value of index which represents the index of the param 
         return index;
+        //
     } // method indexOf
 }
