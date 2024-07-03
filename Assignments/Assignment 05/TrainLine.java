@@ -70,10 +70,9 @@ public class TrainLine {
      */
     public boolean contains(String stationName) {
         boolean found = false;
-        Station current = this.head;
-        while (!found && current != null) {
-            found = current.getName().equals(stationName);
-            current = current.getNext();
+        int index = indexOf(stationName);
+        if (index != -1){
+           found = true;    
         }
         return found;
     } // method contains
