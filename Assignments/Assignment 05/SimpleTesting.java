@@ -22,5 +22,16 @@ public class SimpleTesting {
         // Test non existent
         boolean nonExisting = (redLineSB.indexOf(NON_EXISTENT) == -1);
         System.out.printf("\n\nSequence test: %s", (nonExisting ? PASS : FAIL));
+        //Test append method
+        TrainLine one = new TrainLine();
+        one.addStation("One");
+        one.addStation("Two");
+        one.addStation("Three");
+        TrainLine two = new TrainLine();
+        two.addStation("Four");
+        two.addStation("Five");
+        two.addStation("Six");
+        one.append(two);
+        System.out.println(one.toString());
     }
 }

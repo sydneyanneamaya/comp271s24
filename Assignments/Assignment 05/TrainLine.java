@@ -174,4 +174,15 @@ public class TrainLine {
         return index;
         //
     } // method indexOf
+
+    //appends @param TrainLine other to TrainLine object
+    public void append(TrainLine other){
+        //Find tailStation of this object
+        //Set the next station after the tail to the head of TrainLine other 
+        //to connect the two TrainLine objects
+        this.tail.setNext(other.head);
+        //set this.tail to other.tail so that this object and other have
+        //the same tail station 
+        this.tail = other.tail;
+    }//method append
 }
