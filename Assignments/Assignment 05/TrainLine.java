@@ -145,6 +145,17 @@ public class TrainLine {
      * @return position (int) or -1
      */
     public int indexOf(String name) {
-        return -1;
+        int index = -1;
+        boolean match = false;
+        Station current = this.head;
+        while (!match && current != null){
+            index++;
+            match = current.getName().equals(name);
+            current = current.getNext();
+        }
+        if (match == false && index == this.numberOfStations - 1){
+            index = -1;
+        }
+        return index;
     } // method indexOf
 }
