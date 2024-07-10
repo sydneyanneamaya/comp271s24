@@ -50,10 +50,17 @@ public class TrainLine {
      * head station, the method places the new station after the last station 
      * in the line and marks that new station the last station in the line.
      * 
+     * With a bidirectional Trainline, the newly added station needs to have
+     * two pointers. One will point at the previous tail station since the 
+     * new station is added after the tail station. The other will point at 
+     * the newly added station's next station, assuming there is one (could 
+     * be null).
+     * 
      * @param station Station object to insert at teh end of the line
      */
     public void addStation(Station station) {
-        // Check if this trainline has a head station yet or not
+        //Even if the TrainLine is bidirectional 
+        //Check if this trainline has a head station yet or not
         if (this.head == null) {
             // There is no head station in this trainline. Make the
             // new station, just created, the head station and also
@@ -63,6 +70,11 @@ public class TrainLine {
         } else {
             // The trainline has an existing head station. Therefore,
             // it also has a known last station (this.tail).
+            /*
+             * The tail should become the previous station of the @param 
+             * station since @param station becomes the new tail
+             */
+            station.setPrev(this.tail);
             this.tail.setNext(station); // add new station after tail station
             this.tail = station; // Designate newly added station as tail station
         }
