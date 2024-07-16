@@ -7,11 +7,17 @@ class Node {
     private String data;
     /** Pointer to the next node */
     private Node next;
+    /**how many nodes in the linked lists contain data */
+    private int usage;
+    /*the number of Nodes in the list, also the capacity */
+    private int numberOfNodes;
 
     /** Basic constructor */
     public Node(String data) {
         this.data = data;
         this.next = null;
+        this.usage = 1;
+        this.numberOfNodes = 1;
     } // basic constructor
 
     /** Predicate accessor for next */
@@ -33,4 +39,14 @@ class Node {
     public String toString() {
         return this.data;
     } // method toString
+
+    /**Accessor for usage */
+    public int getUsage(){
+        return this.usage;
+    }//method getUsage
+
+     /**Accessor for numberOfNodes */
+    public int getNumberOfNodes(){
+        return this.numberOfNodes;
+    }//method getNumberOfNodes
 } // class Node
