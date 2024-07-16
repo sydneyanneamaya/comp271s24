@@ -7,14 +7,11 @@ class Node {
     private String data;
     /** Pointer to the next node */
     private Node next;
-    /**how many nodes in the linked lists contain data */
-    private int usage;
 
     /** Basic constructor */
     public Node(String data) {
         this.data = data;
         this.next = null;
-        this.usage = 1;
     } // basic constructor
 
     /** Predicate accessor for next */
@@ -36,15 +33,4 @@ class Node {
     public String toString() {
         return this.data;
     } // method toString
-
-    /**Accessor for usage */
-    public int getUsage(){
-        return this.usage;
-    }//method getUsage
-
-    /**Set data field */
-    public void setData(String s){
-        this.data = s;
-    }
-
 } // class Node
