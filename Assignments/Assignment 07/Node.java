@@ -9,15 +9,12 @@ class Node {
     private Node next;
     /**how many nodes in the linked lists contain data */
     private int usage;
-    /*the number of Nodes in the list, also the capacity */
-    private int numberOfNodes;
 
     /** Basic constructor */
     public Node(String data) {
         this.data = data;
         this.next = null;
         this.usage = 1;
-        this.numberOfNodes = 1;
     } // basic constructor
 
     /** Predicate accessor for next */
@@ -45,8 +42,9 @@ class Node {
         return this.usage;
     }//method getUsage
 
-     /**Accessor for numberOfNodes */
-    public int getNumberOfNodes(){
-        return this.numberOfNodes;
-    }//method getNumberOfNodes
+    /**Set data field */
+    public void setData(String s){
+        this.data = s;
+    }
+
 } // class Node
