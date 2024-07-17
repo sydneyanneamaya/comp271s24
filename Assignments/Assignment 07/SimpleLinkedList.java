@@ -131,6 +131,7 @@ public class SimpleLinkedList implements Stack271<String>, Queue271<String> {
         Node oldHead = this.head;
         //set the head to be the @param
         this.head = newNode;
+        this.head.setNext(oldHead); 
         /*set the Node after the new head as the old head
         since the old head points to the next node and that
         node points to the next node and so on every 
