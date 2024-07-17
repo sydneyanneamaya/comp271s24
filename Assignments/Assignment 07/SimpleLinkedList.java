@@ -33,14 +33,14 @@ public class SimpleLinkedList implements Stack271<String>, Queue271<String> {
             this.usage++;
         }
         return ifAdded;
-    }
-
+    } 
+    /*
     public String remove(){
         String first = this.head.toString();
-        This.head = this.head.getNext; 
+        This.head = this.head.getNext(); 
         nextNode = this.head;
         for (int i = 0; i < DEFAULT_CAPACITY; i++){
-            nextNextNode = nextNode.getNext.getNext();
+            nextNextNode = nextNode.getNext().getNext();
             nextNode.setNext(nextNextNode);
             nextNode = nextNode.getNext();
         } 
@@ -51,13 +51,30 @@ public class SimpleLinkedList implements Stack271<String>, Queue271<String> {
             this.usage--;
         }
         return first;
+    }*/
+
+    public String remove(){
+        String first = this.head.toString();
+        this.head = this.head.getNext();
+        return first;
     }
-}
 
+    public boolean push(String string){
+        boolean isAdded = false;
+        Node newNode = new Node(string);
+        Node oldHead = this.head;
+        if (usage >= DEFAULT_CAPACITY){
+            isAdded = false;
+        }
+        else {
+            this.head = newNode;
+            this.head.setNext(oldHead);
+            isAdded = true;
+        }
+        return isAdded;
+    }
 
-
-
-
-
-
-} // class SimpleLinkedList
+    public String pull(){
+            return this.remove();
+    }
+}// class SimpleLinkedList
