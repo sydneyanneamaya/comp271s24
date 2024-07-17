@@ -15,47 +15,59 @@ public class SimpleLinkedList implements Stack271<String>, Queue271<String> {
      *  of this list because there cannot be a node 
      *  without data (so usage is the same as capacity)
      */
-    private int usage;
 
-    private static final int DEFAULT_CAPACITY = 4;
+    public static void main(String[] args) {
+
+        SimpleLinkedList demoQueue = new SimpleLinkedList();
+        SimpleLinkedList demoStack = new SimpleLinkedList();
+
+        demoQueue.add("A");
+        demoQueue.add("B");
+        demoQueue.add("C");
+       
+        boolean queueWorks = demoQueue.remove().equals("A") &&
+                demoQueue.remove().equals("B") &&
+                demoQueue.remove().equals("C") &&
+                demoQueue.remove() == null;
+
+        demoStack.push("A");
+        demoStack.push("B");
+        demoStack.push("C");
+
+        boolean stackWorks = demoStack.pull().equals("C") &&
+                demoStack.pull().equals("B") &&
+                demoStack.pull().equals("A") &&
+                demoStack.pull() == null;
+
+        System.out.println(queueWorks);
+        System.out.println(stackWorks);
+    }
 
     public boolean add(String string){
         Node newNode = new Node(string);
         boolean ifAdded = false;
-        if((this.head == null) && (this.usage < DEFAULT_CAPACITY)){
+        if(this.head == null){
             this.head = newNode;
             this.tail = newNode;
             ifAdded = true;
         }
-        else if(this.usage < DEFAULT_CAPACITY){
+        else {
             this.tail.setNext(newNode);
+            this.tail = newNode;
             ifAdded = true;
-            this.usage++;
         }
         return ifAdded;
     } 
-    /*
+
     public String remove(){
-        String first = this.head.toString();
-        This.head = this.head.getNext(); 
-        nextNode = this.head;
-        for (int i = 0; i < DEFAULT_CAPACITY; i++){
-            nextNextNode = nextNode.getNext().getNext();
-            nextNode.setNext(nextNextNode);
-            nextNode = nextNode.getNext();
-        } 
-        if (this.usage == 0){
+        String first = null;
+        if(this.head == null){
             first = null;
         }
         else {
-            this.usage--;
+           first = this.head.toString();
+           this.head = this.head.getNext();
         }
-        return first;
-    }*/
-
-    public String remove(){
-        String first = this.head.toString();
-        this.head = this.head.getNext();
         return first;
     }
 
@@ -63,14 +75,9 @@ public class SimpleLinkedList implements Stack271<String>, Queue271<String> {
         boolean isAdded = false;
         Node newNode = new Node(string);
         Node oldHead = this.head;
-        if (usage >= DEFAULT_CAPACITY){
-            isAdded = false;
-        }
-        else {
-            this.head = newNode;
-            this.head.setNext(oldHead);
-            isAdded = true;
-        }
+        this.head = newNode;
+        this.head.setNext(oldHead);
+        isAdded = true;
         return isAdded;
     }
 
@@ -78,3 +85,4 @@ public class SimpleLinkedList implements Stack271<String>, Queue271<String> {
             return this.remove();
     }
 }// class SimpleLinkedList
+
