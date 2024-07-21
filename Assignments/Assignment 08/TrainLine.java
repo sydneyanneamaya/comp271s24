@@ -218,4 +218,84 @@ public class TrainLine {
         }
     } // method append
 
+    /**
+     * Write a method String listStations that returns a string 
+     * with names of the stations in a TrainLine object, 
+     * in the order in which the train line is traversed.
+     * @param other
+     * @return String
+     * 
+     * 
+     */
+
+    public String listStations(Trainline other){
+        //First create the string variable which will store all the station names
+        String listOfNames = " ";
+        //set the first station at the beignning of the loop as the head 
+        Station currentStation = this.getHead();
+        //check to see if the param is null and if other's head is null
+        //we assume the object invoking the method is not null
+        if(other != null && other.getHead() != null){
+            //the while loop will end when there are no more stations to traverse
+            while (currentStation != null) {
+                //add the current station's name to the string listOfNames
+                //I still need to implement a way to print each name on a new line
+                listOfNames = listOfNames + currentStation.getName();
+                //set the next station to the station after the current station 
+                currentStation = currentStation.getNext();
+            }
+        }
+        else {
+            listOfNames = "This line is empty'";
+        }
+        return listOfNames;
+    }//method listStations
+
+    /**
+     * Write a method boolean intersects(TrainLine other) that returns true if the two
+     * lines cross each other and false otherwise. 
+     * @param other
+     * @return boolean intersects
+     */
+
+    public boolean intersects(Trainline other){
+        //create and initialize boolean variable
+        boolean intersects = false;
+        //set the first station the loop will traverse of this object as the head
+        Station currentStation = this.getHead();
+        //set the second station the loop will traverse as the @param other's head
+        Station otherCurrent = other.getHead();
+        //check to see if the @param other is null and if it's head is null
+        if(other != null && other.getHead() != null){
+            /** 
+             * the while loop will end when either the other trainline will run out of stations
+             * to traverse or this trainline will run out of stations to traverse without an 
+             * intersection being found OR the loop will end when an intersection is found
+             */
+            while(currentStation != null || otherCurrent != null || intersects == true){
+                //compare the names of the current stations in the trainlines to see if they are equal
+                //if they are equal then there is an intersection 
+                if(currentStation.getName().equals(otherNext.getName())){
+                    intersects = true;
+                }
+                //set the next stations to the station after the current stations
+                currentStation = currentStation.getNext();
+                otherNext = otherNext.getNext();
+            }
+        }
+        return intersects;
+    }//method intersects
+
+
+
+    public int comparableTo(Trainline other){
+        int first = 0;
+        int second = 0;
+        if(other != null && other.getHead() != null){
+            first = this.getNumberOfStations();
+            second = other.getNumberOfStations();\
+        }
+        return first - second;
+    }//method comparableTo
+
 } // class TrainLine
