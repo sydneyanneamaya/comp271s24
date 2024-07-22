@@ -228,7 +228,7 @@ public class TrainLine {
      * 
      */
 
-    public String listStations(Trainline other){
+    public String listStations(TrainLine other){
         //First create the string variable which will store all the station names
         String listOfNames = " ";
         //set the first station at the beignning of the loop as the head 
@@ -258,7 +258,7 @@ public class TrainLine {
      * @return boolean intersects
      */
 
-    public boolean intersects(Trainline other){
+    public boolean intersects(TrainLine other){
         //create and initialize boolean variable
         boolean intersects = false;
         //set the first station the loop will traverse of this object as the head
@@ -275,12 +275,12 @@ public class TrainLine {
             while(currentStation != null || otherCurrent != null || intersects == true){
                 //compare the names of the current stations in the trainlines to see if they are equal
                 //if they are equal then there is an intersection 
-                if(currentStation.getName().equals(otherNext.getName())){
+                if(currentStation.getName().equals(otherCurrent.getName())){
                     intersects = true;
                 }
                 //set the next stations to the station after the current stations
                 currentStation = currentStation.getNext();
-                otherNext = otherNext.getNext();
+                otherCurrent = otherCurrent.getNext();
             }
         }
         return intersects;
@@ -288,12 +288,12 @@ public class TrainLine {
 
 
 
-    public int comparableTo(Trainline other){
+    public int comparableTo(TrainLine other){
         int first = 0;
         int second = 0;
         if(other != null && other.getHead() != null){
             first = this.getNumberOfStations();
-            second = other.getNumberOfStations();\
+            second = other.getNumberOfStations();
         }
         return first - second;
     }//method comparableTo
