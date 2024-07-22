@@ -222,7 +222,6 @@ public class TrainLine {
      * Write a method String listStations that returns a string 
      * with names of the stations in a TrainLine object, 
      * in the order in which the train line is traversed.
-     * @param other
      * @return String
      * 
      * 
@@ -239,7 +238,7 @@ public class TrainLine {
             while (currentStation != null) {
                 //add the current station's name to the string listOfNames
                 //I still need to implement a way to print each name on a new line
-                listOfNames = listOfNames + currentStation.getName();
+                listOfNames = listOfNames + currentStation.getName() + " ";
                 //set the next station to the station after the current station 
                 currentStation = currentStation.getNext();
             }
