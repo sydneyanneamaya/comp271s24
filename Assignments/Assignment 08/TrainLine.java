@@ -228,14 +228,13 @@ public class TrainLine {
      * 
      */
 
-    public String listStations(TrainLine other){
+    public String listStations(){
         //First create the string variable which will store all the station names
         String listOfNames = " ";
         //set the first station at the beignning of the loop as the head 
         Station currentStation = this.getHead();
-        //check to see if the param is null and if other's head is null
-        //we assume the object invoking the method is not null
-        if(other != null && other.getHead() != null){
+        //check to see if the trainline is null and if the trainline's head is null
+        if(this != null && this.getHead() != null){
             //the while loop will end when there are no more stations to traverse
             while (currentStation != null) {
                 //add the current station's name to the string listOfNames
