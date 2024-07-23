@@ -238,7 +238,7 @@ public class TrainLine {
             while (currentStation != null) {
                 //add the current station's name to the string listOfNames
                 //I still need to implement a way to print each name on a new line
-                listOfNames = listOfNames + currentStation.getName() + " ";
+                listOfNames = listOfNames + "\n" + currentStation.getName() + " ";
                 //set the next station to the station after the current station 
                 currentStation = currentStation.getNext();
             }
