@@ -3,12 +3,16 @@ public class Hash271 {
     /** Default size for foundation array */
     private static final int DEFAULT_SIZE = 4;
 
+    /**number of nodes in the array */
+    private int numberOfNodes;
+
     /** Foundation array of node objects */
     Node[] foundation;
 
     /** Basic constructor */
     public Hash271(int size) {
         this.foundation = new Node[size];
+        this.numberOfNodes = 0;
     } // basic constructor
 
     /** Default constructor */
@@ -46,6 +50,12 @@ public class Hash271 {
             }
             // Put the new node to the array position
             this.foundation[destination] = node;
+            //update numberOfNodes since a new node was added
+            this.numberOfNodes++;
+            //check to see if loadfactor is over %75 anf if it is rehash
+            if(this.getLoadFactor() >= .75){
+                rehash();
+            }
         }
     } // method put
 
@@ -77,6 +87,55 @@ public class Hash271 {
         }
         return sb.toString();
     } // method toString
+
+    /**
+     * rehashes the array when loadfactor is over 75%
+     */
+
+    private void rehash(){
+        //create node variable
+        Node nodeAtIndex;
+        //double the length of the foundation
+        this.foundation = new Node[this.foundation.length*2];
+        //use a for looop to traverse the first half of the foundation
+        //since there will be no nodes in the second half because
+        //they haven't been repositioned yet
+        for (int i = 0; i < this.foundation.length / 2; i++){
+            //check to see if there are any nodes at the index
+            if(this.foundation[i] != null){
+                //if there is a node set the first node to nodeAtIndex
+                nodeAtIndex = this.foundation[i];
+                //use a while loop to traverse linked list at the index
+                while(nodeAtIndex != null){
+                    //call put method to put node at its index based off new 
+                    //length of array
+                    put(nodeAtIndex);
+                    //set nodeAtIndex as next node in list, if it is null then 
+                    //then while loop will end
+                    nodeAtIndex = nodeAtIndex.getNext();
+                }
+            }
+            //update index
+            i++;
+        }
+    }//rehash()
+
+    /**
+     * accessor method 
+     * returns the number of nodes in the array
+     */
+    public int getNumberOfNodes(){
+        return this.numberOfNodes;
+    }//getNumberOfNodes
+
+    /**
+     * finds load factor by dividing the number of node by the array length
+     * and returns a double
+     * 
+     */
+    public double getLoadFactor(){
+        return (double) numberOfNodes/this.foundation.length;
+    }//getLoadFactor
 
     /** Driver code */
     public static void main(String[] args) {
