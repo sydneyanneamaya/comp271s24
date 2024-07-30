@@ -2,6 +2,9 @@ public class Hash271 {
 
     /** Default size for foundation array */
     private static final int DEFAULT_SIZE = 4;
+    
+    /**Default value of threshold*/
+    private static final double DEFAULT_THRESHOLD = 0.75;
 
     /**number of nodes in the array */
     private int numberOfNodes;
@@ -53,7 +56,7 @@ public class Hash271 {
             //update numberOfNodes since a new node was added
             this.numberOfNodes++;
             //check to see if loadfactor is over %75 anf if it is rehash
-            if(this.getLoadFactor() >= .75){
+            if(this.getLoadFactor() >= DEFAULT_THRESHOLD){
                 rehash();
             }
         }
