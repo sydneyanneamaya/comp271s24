@@ -59,18 +59,40 @@ public class Sorting271 {
  * Write a method int[] sort(int[] array) that takes an integer array with 2n
  * elements and sorts it in ascending order, by using the technique described above. 
  */
-public int[] sort(int[] array){
-  
-  return array;
+public static int[] sort(int[] array){
+  //create int arrays to store values
+  int [] newArray = new int[array.length];
+  //stores first half of parameter array
+  int [] one = new int[array.length / 2];
+  //stores second half of parameter array 
+  int [] two = new int[array.length / 2];
+  //iterates through first half of array and stores those elements
+  for (int i = 0; i < array.length / 2; i++){
+    one[i] = array[i];
+  }
+  //iterates through second half of array and stores those elements
+  for (int i = array.length / 2; i <= array.length - 1; i++){
+    two[i - 2] = array[i];
+  }
+  //puts both arrays in numerical order
+  newArray = merge(one, two);
+  return newArray;
 }
 
 public static void main(String [] args){
-  int[] a = {1,2,8,9};
+  int[] a = {1,2,8,9}; 
   int [] b = {0,5,6,7};
   int [] c = merge(a,b);
   for (int i = 0; i <= c.length -1;i++){
-    System.out.println(c[i] + ",");
+    System.out.print(c[i] + ",");
   }
+  System.out.println();
+  int [] d = {10,8,5,3};
+  int [] e = sort(d);
+  for (int i = 0; i <= e.length -1;i++){
+    System.out.print(e[i] + ",");
+  }
+  System.out.println();
  }
 
 }//class Sorting271
