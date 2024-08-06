@@ -236,6 +236,28 @@ public class TrainLine_Solutions_8 {
         return stationList.toString();
     } // method listStations
 
+    public String reverseListStations(){
+        //First create the string variable which will store all the station names
+        String listOfNames = " ";
+        //set the first station at the beignning of the loop as the head 
+        Station currentStation = this.getHead();
+        //check to see if the trainline is null and if the trainline's head is null
+        if(this != null && this.getHead() != null){
+            //the while loop will end when there are no more stations to traverse
+            while (currentStation != null) {
+                //add the current station's name to the string listOfNames
+                listOfNames = currentStation.getName() + listOfNames + "\n";
+                //set the next station to the station after the current station 
+                currentStation = currentStation.getNext();
+            }
+        }
+        else {
+            listOfNames = "This line is empty'";
+        }
+        return listOfNames;
+    }//method reverseListStations
+    }
+
     /**
      * Determines if two trainline objects intersect, i.e., they both have a station
      * with the same name. The method stops as soon as an intersection is found.
@@ -243,7 +265,7 @@ public class TrainLine_Solutions_8 {
      * do not intersect at all, the method runs an exhaustive traversal for both
      * lines. Nulls are treated as empty lines (no intersectin found)
      */
-    public boolean intersects(TrainLine_Solutions_8 other) {
+    public boolean intersects(TrainLine other) {
         // Check if two objects are the same
         boolean intersectionFound = this == other;
         // If they are not the same, check them thoroughly, but if they are, 
@@ -268,7 +290,7 @@ public class TrainLine_Solutions_8 {
     /**
      * Compares two lines based on their number of train stations. 
      */
-    public int compareTo(TrainLine_Solutions_8 other) {
+    public int compareTo(TrainLine other) {
         return this.numberOfStations - other.getNumberOfStations();
     } // method compareTo
 
