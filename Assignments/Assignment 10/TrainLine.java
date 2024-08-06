@@ -236,27 +236,32 @@ public class TrainLine {
         return stationList.toString();
     } // method listStations
 
+   /**
+    * list the order in reverse
+    * does the same thing as listStations except currentStation.getName goes to the 
+    * front of the string
+    */
     public String reverseListStations(){
-        //First create the string variable which will store all the station names
-        String listOfNames = " ";
-        //set the first station at the beignning of the loop as the head 
-        Station currentStation = this.getHead();
-        //check to see if the trainline is null and if the trainline's head is null
-        if(this != null && this.getHead() != null){
-            //the while loop will end when there are no more stations to traverse
-            while (currentStation != null) {
-                //add the current station's name to the string listOfNames
-                listOfNames = currentStation.getName() + listOfNames + "\n";
-                //set the next station to the station after the current station 
-                currentStation = currentStation.getNext();
-            }
-        }
-        else {
-            listOfNames = "This line is empty'";
-        }
-        return listOfNames;
+       //First create the string variable which will store all the station names
+       String listOfNames = " ";
+       //set the first station at the beignning of the loop as the head 
+       Station currentStation = this.getHead();
+       //check to see if the trainline is null and if the trainline's head is null
+       if(this != null && this.getHead() != null){
+           //the while loop will end when there are no more stations to traverse
+           while (currentStation != null) {
+               //add the current station's name to the string listOfNames
+               listOfNames = currentStation.getName() + String.format("\n") + listOfNames;
+               //set the next station to the station after the current station 
+               currentStation = currentStation.getNext();
+           }
+       }
+       else {
+           listOfNames = "This line is empty'";
+       }
+       return listOfNames;
     }//method reverseListStations
-    }
+    
 
     /**
      * Determines if two trainline objects intersect, i.e., they both have a station
@@ -293,5 +298,22 @@ public class TrainLine {
     public int compareTo(TrainLine other) {
         return this.numberOfStations - other.getNumberOfStations();
     } // method compareTo
+
+    public static void main (String[] args){
+        TrainLine lincolnService = new TrainLine();
+        lincolnService.addStation("Chicago");
+        lincolnService.addStation("Summit");
+        lincolnService.addStation("Joliet");
+        lincolnService.addStation("Dwight");
+        lincolnService.addStation("Pontiac");
+        lincolnService.addStation("Bloomington");
+        lincolnService.addStation("Lincoln");
+        lincolnService.addStation("Springfield");
+        lincolnService.addStation("Carlinville");
+        lincolnService.addStation("Alton");
+        lincolnService.addStation("Saint Louis");
+        String myString = lincolnService.reverseListStations();
+        System.out.println(myString);
+    }
 
 } // class TrainLine
