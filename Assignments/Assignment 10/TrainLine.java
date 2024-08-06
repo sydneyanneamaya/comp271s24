@@ -1,4 +1,4 @@
-public class TrainLine_Solutions_8 {
+public class TrainLine {
 
     private static final String EMPTY_LINE_MESSAGE = "The line is empty.";
 
@@ -15,7 +15,7 @@ public class TrainLine_Solutions_8 {
     private int numberOfStations;
 
     /** Default constructor - redundant but good to show intent */
-    public TrainLine_Solutions_8() {
+    public TrainLine() {
         this.head = null;
         this.tail = null;
         this.numberOfStations = 0;
@@ -205,7 +205,7 @@ public class TrainLine_Solutions_8 {
      * 
      * @param other Trainline to append to present object
      */
-    public void append(TrainLine_Solutions_8 other) {
+    public void append(TrainLine other) {
         // First make sure that the trainline we wish to append is not null or empty
         if (other != null && other.getHead() != null) {
             // OK, we have something to append, now how to append it?
